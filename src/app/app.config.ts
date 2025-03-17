@@ -1,19 +1,22 @@
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-
+import { AngularFireModule } from '@angular/fire/compat';
 import { PoHttpRequestModule } from '@po-ui/ng-components';
+import { environment } from '../environments/environment.dev';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(),
-    importProvidersFrom([PoHttpRequestModule]),
+    provideHttpClient(withInterceptorsFromDi()),
+    importProvidersFrom(
+      PoHttpRequestModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      // AngularFirestoreModule,
+      // AngularFireAuthModule
+    ),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(withInterceptorsFromDi())
   ],
-  
 };

@@ -1,0 +1,6 @@
+@if(clientes) {
+  <po-table [p-items]="clientes" [p-columns]="columns" [p-loading]="loading"></po-table>
+  <p>Total de clientes: {{ clientes.length }}</p>
+} @else {
+  <p>Não há clientes cadastrados</p>
+}
