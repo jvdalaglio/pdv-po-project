@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@animaliads/animalia-icon": "^1.0.3",
     "@po-ui/ng-components": "^18.24.0",
     "firebase": "^11.4.0",
     "rxjs": "~7.8.0",

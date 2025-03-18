@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, ViewChild } from '@angular/core';
 import { PoButtonModule, PoDynamicFormField, PoDynamicModule, PoNotificationService } from '@po-ui/ng-components';
 import { ClientesService } from '../../core/services/clientes/clientes.service';
 import { Cliente } from '../../models/clientes';
@@ -12,6 +12,10 @@ import { Cliente } from '../../models/clientes';
   providers: [PoDynamicModule]
 })
 export class CadastrarClientesComponent {
+  //INJECTABLES
+  public poNotification: PoNotificationService = inject(PoNotificationService);
+  private clientesService: ClientesService = inject(ClientesService)
+  //DECORATORS
   @ViewChild('dynamicForm') dynamicForm!: any;
   @Input() person: Cliente = {
     nome: '',
@@ -22,10 +26,7 @@ export class CadastrarClientesComponent {
   }
   @Input() salvarEditar: boolean = false
   @Output() editarEmitter: EventEmitter<any> = new EventEmitter();
-  constructor(
-    public poNotification: PoNotificationService,
-    private clientesService: ClientesService
-  ) {}
+  //VARIABLES
   validateFields: Array<string> = ['state'];
 
   fields: Array<PoDynamicFormField> = [
@@ -46,8 +47,6 @@ export class CadastrarClientesComponent {
     { property: 'telefone', mask: '(99) 99999-9999', gridColumns: 6, label: 'Telefone' },
     { property: 'endereco', gridColumns: 6, label: 'Endereço' },
   ];
-
-
 
   cadastrarCliente() {
     this.clientesService.adicionarCliente(this.person).then((res) => {

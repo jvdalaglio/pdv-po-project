@@ -31,15 +31,20 @@ export class AppComponent {
   private router: Router = new Router();
   public menuItemSelected: string = '';
   readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this), link: '/', icon: 'an-fill an-home' },
+    { label: 'Início', action: this.onClick.bind(this), link: '/', icon: 'an-fill an-home' },
     { label: 'Clientes', subItems: [
       { label: 'Listar', action: this.onClick.bind(this), link: '/clientes/listar' },
       { label: 'Cadastrar', action: this.onClick.bind(this), link: '/clientes/cadastrar' }
+    ] },
+    { label: 'Produtos', subItems: [
+      { label: 'Listar', action: this.onClick.bind(this), link: '/produtos/listar' },
+      { label: 'Cadastrar', action: this.onClick.bind(this), link: '/produtos/cadastrar' }
     ] },
   ];
 
   private onClick(menu: PoMenuItem) {
     this.menuItemSelected = menu.label
+    console.log('menu', menu);
     this.router.navigate([menu.link]);
   }
 }

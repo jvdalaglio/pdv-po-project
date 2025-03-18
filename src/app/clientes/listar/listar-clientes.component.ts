@@ -21,12 +21,13 @@ interface Modal {
 })
 
 export class ListarClientesComponent {
-  constructor(private poNotification: PoNotificationService) {
-
-  }
+  // DECORATORS
   @ViewChild(PoTableComponent, { static: true }) poTable!: PoTableComponent;
   @ViewChild(PoModalComponent, { static: true }) poModal!: PoModalComponent;
+  // INJECTABLES
     private clientesService: ClientesService = inject(ClientesService);
+    private poNotification: PoNotificationService = inject(PoNotificationService);
+  //VARIABLES
     public clientes: Array<Cliente> = [];
     public loading: boolean = false;
     public details: any;
@@ -37,19 +38,19 @@ export class ListarClientesComponent {
     };
 
     public columns: PoTableColumn[] = [
-      { property: 'id', label: 'ID', width: '15%' },
-      { property: 'nome', label: 'Nome', width: '25%' },
-      { property: 'email', label: 'E-mail', width: '15%' },
-      { property: 'endereco', label: 'Endereço', width: '25%' },
-      { property: 'telefone', label: 'Telefone', width: '10%' },
-      { property: 'cpf', label: 'CPF', width: '10%' },
-      { property: 'dataCadastro', label: 'Data de cadastro', width: '10%' },
+      { property: 'nome', label: 'Nome', width: '25%', sortable: true },
+      { property: 'email', label: 'E-mail', width: '15%', sortable: false},
+      { property: 'endereco', label: 'Endereço', width: '25%', sortable: false },
+      { property: 'telefone', label: 'Telefone', width: '10%', sortable: false },
+      { property: 'cpf', label: 'CPF', width: '10%', sortable: false },
+      { property: 'dataCadastro', label: 'Data de cadastro', width: '10%', sortable: false },
     ]
 
     public actions: Array<PoTableAction> = [
       { action: this.remove.bind(this), icon: 'po-icon an an-trash', label: 'Excluir' },
       { action: this.edit.bind(this), icon: 'po-icon an an-edit', label: 'Editar' },
     ];
+
 
   ngOnInit() {
     this.listarClientes();
