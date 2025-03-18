@@ -81,7 +81,6 @@ export class ListarClientesComponent {
   }
 
   public editarCliente(cliente: any) {
-    console.log('edit', cliente);
     this.clientesService.atualizarCliente(cliente.id, cliente).then(() => {
       this.poModal.close();
       this.poNotification.success('Cliente atualizado com sucesso');

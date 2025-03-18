@@ -44,7 +44,6 @@ export class AppComponent {
 
   private onClick(menu: PoMenuItem) {
     this.menuItemSelected = menu.label
-    console.log('menu', menu);
     this.router.navigate([menu.link]);
   }
 }
