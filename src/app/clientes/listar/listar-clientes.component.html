@@ -1,6 +1,27 @@
-@if(clientes) {
-  <po-table [p-items]="clientes" [p-columns]="columns" [p-loading]="loading"></po-table>
-  <p>Total de clientes: {{ clientes.length }}</p>
-} @else {
-  <p>Não há clientes cadastrados</p>
-}
+<po-table
+  #poTable
+  [p-items]="clientes"
+  [p-columns]="columns"
+  [p-loading]="loading"
+  [p-hide-columns-manager]="true"
+  [p-hide-table-search]="false"
+  [p-sort]="true"
+  [p-height]="600"
+  [p-actions]="actions"
+  [p-striped]="true"
+  [p-show-more-disabled]="true"
+>
+</po-table>
+<po-divider></po-divider>
+
+<po-modal #poModal p-click-out="true" p-size="sm" p-title="Excluir cliente">
+  {{ "Tem certeza de que deseja excluir o cliente " + details?.nome + " ?" }}
+  <po-modal-footer>
+    <po-button (p-click)="poModal.close()" p-label="Cancelar" />
+    <po-button
+      (p-click)="deletarCliente(details)"
+      p-label="Excluir"
+      p-danger="true"
+    />
+  </po-modal-footer>
+</po-modal>

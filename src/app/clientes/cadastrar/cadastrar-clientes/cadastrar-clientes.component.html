@@ -1,0 +1,20 @@
+<po-dynamic-form
+  #dynamicForm
+  p-auto-focus="name"
+  [p-fields]="fields"
+  [p-validate-fields]="validateFields"
+  [p-value]="person"
+>
+</po-dynamic-form>
+
+<br />
+
+<div class="po-row">
+  <po-button
+    class="po-md-3"
+    p-label="Salvar"
+    [p-disabled]="dynamicForm.form.invalid ?? true"
+    (p-click)="salvarCliente()"
+  >
+  </po-button>
+</div>

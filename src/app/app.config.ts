@@ -4,6 +4,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { PoHttpRequestModule } from '@po-ui/ng-components';
 import { environment } from '../environments/environment.dev';
 
@@ -14,8 +16,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       PoHttpRequestModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
-      // AngularFirestoreModule,
-      // AngularFireAuthModule
+      AngularFirestoreModule,
+      AngularFireAuthModule
     ),
     provideZoneChangeDetection({ eventCoalescing: true }),
   ],

@@ -4,6 +4,7 @@ import { Router, RouterOutlet } from '@angular/router';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
+  PoIconModule,
   PoMenuItem,
   PoMenuModule,
   PoPageModule,
@@ -19,7 +20,8 @@ import { ClientesService } from './core/services/clientes/clientes.service';
     RouterOutlet,
     PoToolbarModule,
     PoMenuModule,
-    PoPageModule
+    PoPageModule,
+    PoIconModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

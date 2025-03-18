@@ -1,7 +1,9 @@
+import { Timestamp } from "rxjs";
+
 export interface Cliente {
-  dataCadastro: string;
+  dataCadastro: Timestamp;
   email: string;
-  id: string;
+  id?: string;
   nome: string;
   telefone: string;
   endereco: string;
