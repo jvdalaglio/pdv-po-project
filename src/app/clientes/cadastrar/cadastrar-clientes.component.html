@@ -14,7 +14,7 @@
     class="po-md-3"
     p-label="Salvar"
     [p-disabled]="dynamicForm.form.invalid ?? true"
-    (p-click)="salvarCliente()"
+    (p-click)="salvarEditar ? editarCliente() : cadastrarCliente()"
   >
   </po-button>
 </div>

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { PoButtonModule, PoDynamicFormField, PoDynamicModule, PoNotificationService } from '@po-ui/ng-components';
-import { ClientesService } from '../../../core/services/clientes/clientes.service';
-import { Cliente } from '../../../models/clientes';
+import { ClientesService } from '../../core/services/clientes/clientes.service';
+import { Cliente } from '../../models/clientes';
 
 @Component({
   selector: 'app-cadastrar-clientes',
@@ -13,18 +13,19 @@ import { Cliente } from '../../../models/clientes';
 })
 export class CadastrarClientesComponent {
   @ViewChild('dynamicForm') dynamicForm!: any;
-  constructor(
-    public poNotification: PoNotificationService,
-    private clientesService: ClientesService
-  ) {}
-
-  person: Cliente = {
+  @Input() person: Cliente = {
     nome: '',
     email: '',
     telefone: '',
     endereco: '',
-    dataCadastro: new Date()
-  };
+    dataCadastro: new Date().toLocaleDateString('pt-BR'),
+  }
+  @Input() salvarEditar: boolean = false
+  @Output() editarEmitter: EventEmitter<any> = new EventEmitter();
+  constructor(
+    public poNotification: PoNotificationService,
+    private clientesService: ClientesService
+  ) {}
   validateFields: Array<string> = ['state'];
 
   fields: Array<PoDynamicFormField> = [
@@ -48,7 +49,7 @@ export class CadastrarClientesComponent {
 
 
 
-  salvarCliente() {
+  cadastrarCliente() {
     this.clientesService.adicionarCliente(this.person).then((res) => {
       this.poNotification.success('Cliente cadastrado com sucesso');
       this.dynamicForm.form.reset();
@@ -56,5 +57,9 @@ export class CadastrarClientesComponent {
       this.poNotification.error('Erro ao cadastrar cliente');
       console.error(error);
     })
+  }
+
+  editarCliente() {
+    this.editarEmitter.emit(this.person);
   }
 }
