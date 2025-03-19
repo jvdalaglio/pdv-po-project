@@ -21,9 +21,10 @@ export class ListarProdutosComponent {
     { property: 'nome', label: 'Nome', width: '25%', sortable: true },
     { property: 'categoria', label: 'Categoria', width: '15%', sortable: false},
     { property: 'descricao', label: 'Descrição', width: '25%', sortable: false },
-    { property: 'quantidadeEstoque', label: 'Quantidade', width: '10%', sortable: false },
-    { property: 'preco', label: 'Preço', width: '10%', sortable: false, type: 'currency', format: 'BRL' },
-    { property: 'dataCadastro', label: 'Data de cadastro', width: '10%', sortable: false },
+    { property: 'quantidadeEstoque', label: 'Quantidade', width: '10%', sortable: true },
+    { property: 'preco', label: 'Preço', width: '10%', sortable: true },
+    { property: 'total', label: 'Total', width: '10%', sortable: true },
+    { property: 'dataCadastro', label: 'Data de cadastro', width: '10%', sortable: false }
   ]
   public actions: Array<PoTableAction> = [
     { action: this.remove.bind(this), icon: 'po-icon an an-trash', label: 'Excluir' },
@@ -42,6 +43,8 @@ export class ListarProdutosComponent {
         return {
           id: e.payload.doc.id,
           ...e.payload.doc.data(),
+          preco: e.payload.doc.data().preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+          total: (e.payload.doc.data().quantidadeEstoque * e.payload.doc.data().preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
         }
       })
     })

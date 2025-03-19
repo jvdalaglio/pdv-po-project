@@ -1,0 +1,19 @@
+<po-divider />
+<div class="po-row">
+  <po-chart
+    class="po-lg-6 po-mt-2"
+    [p-series]="[
+      { label: 'Angular', data: 100 },
+      { label: 'React', data: 10 }
+    ]"
+    p-title="Vendas por categorias"
+  />
+  <po-chart
+    class="po-lg-6 po-mt-2"
+    p-title="Vendas"
+    [p-options]="optionsColumn"
+    [p-categories]="categoriesColumn"
+    [p-series]="evolutionOfCoffeeAndSomeCompetitors"
+  />
+</div>
+<po-divider />
