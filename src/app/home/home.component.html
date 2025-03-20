@@ -3,17 +3,27 @@
   <po-chart
     class="po-lg-6 po-mt-2"
     [p-series]="[
-      { label: 'Angular', data: 100 },
-      { label: 'React', data: 10 }
+      { label: 'Camisetas', data: 12 },
+      { label: 'Bermudas', data: 23 },
+      { label: 'Calças', data: 15 },
+      { label: 'Sapatos', data: 32 }
     ]"
-    p-title="Vendas por categorias"
+    p-title="Quantidade em estoque"
   />
-  <po-chart
-    class="po-lg-6 po-mt-2"
-    p-title="Vendas"
-    [p-options]="optionsColumn"
-    [p-categories]="categoriesColumn"
-    [p-series]="evolutionOfCoffeeAndSomeCompetitors"
-  />
+  <div class="po-lg-6 po-mt-2">
+    <po-combo
+      name="combo"
+      p-label="PO Combo"
+      [p-options]="[{ value: 2024 }, { value: 2025 }]"
+      (ngModelChange)="changeYear($event)"
+    >
+    </po-combo>
+    <po-chart
+      [p-title]="'Vendas - ' + year"
+      [p-options]="optionsColumn"
+      [p-categories]="categoriesColumn"
+      [p-series]="vendasPorMes"
+    />
+  </div>
 </div>
 <po-divider />
