@@ -1,27 +1,62 @@
-# PdvPoProject
+# PDV Simples - Ponto de Venda para Lojas de Pequeno Porte
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.14.
+Bem-vindo ao repositório do **PDV Simples**, um sistema de ponto de venda desenvolvido para atender às necessidades de pequenas lojas da sua cidade. Este projeto foi criado com o objetivo de ser simples, eficiente e de fácil utilização, permitindo que lojistas gerenciem suas vendas, estoque e clientes de forma prática.
 
-## Development server
+## Funcionalidades Principais
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Clientes
+- **Cadastro de Clientes**: Formulário simples para cadastrar novos clientes.
+- **Consulta de Clientes**: Tabela de consulta para visualizar todos os clientes cadastrados.
+- **Histórico de Compras**: Visualização das compras realizadas por cada cliente.
 
-## Code scaffolding
+### Estoque de Produtos
+- **Cadastro de Produtos**: Formulário para cadastrar novos produtos no estoque.
+- **Consulta de Produtos**: Busca de produtos por ID ou nome.
+- **Categorias de Produtos**: Organização dos produtos em categorias para facilitar a busca e gestão.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Vendas
+- **Finalização de Venda**: Interface simples para finalizar uma venda, com cálculo automático do total.
+- **Consulta de Vendas**: Visualização de todas as vendas realizadas, com gráficos para análise de desempenho.
 
-## Build
+## Funcionalidades Adicionais (Ideias para MVP)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Aqui estão algumas ideias de funcionalidades que podem ser implementadas sem muito esforço e que agregam valor ao seu MVP:
 
-## Running unit tests
+1. **Relatórios Simples**:
+   - Relatório de vendas diárias, semanais e mensais.
+   - Relatório de produtos mais vendidos.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Descontos e Promoções**:
+   - Aplicação de descontos percentuais ou fixos durante a finalização da venda.
+   - Cadastro de promoções para produtos específicos.
 
-## Running end-to-end tests
+3. **Controle de Usuários**:
+   - Cadastro de usuários com diferentes níveis de acesso (ex.: vendedor, gerente).
+   - Autenticação simples para acesso ao sistema.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. **Notificação de Estoque Baixo**:
+   - Alertas quando o estoque de um produto estiver abaixo de um limite definido.
 
-## Further help
+5. **Exportação de Dados**:
+   - Exportação de relatórios de vendas e estoque em formato CSV ou PDF.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+6. **Integração com Impressora**:
+   - Impressão automática de recibos ao finalizar uma venda.
+
+7. **Busca Rápida**:
+   - Barra de busca rápida para clientes e produtos durante a venda.
+
+8. **Pagamentos**:
+   - Registro de diferentes formas de pagamento (dinheiro, cartão, PIX, etc.).
+   - Cálculo de troco automático.
+
+## Como Executar o Projeto
+
+### Pré-requisitos
+- Node.js instalado (versão 14 ou superior).
+- Banco de dados SQLite (ou outro de sua preferência).
+
+### Instalação
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/pdv-simples.git
